@@ -26,6 +26,7 @@ group :development, :test do
   gem 'rspec'
   gem 'factory_bot_rails'
   gem 'annotaterb'
+  gem 'rails-controller-testing'
 end
 
 group :development do

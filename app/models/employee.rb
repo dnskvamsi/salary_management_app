@@ -8,4 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Employee < ApplicationRecord
+  validates_presence_of :first_name
 end

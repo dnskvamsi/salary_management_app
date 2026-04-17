@@ -30,4 +30,27 @@ RSpec.describe Address, type: :model do
   [:line_1, :line_2, :city, :state].each do |field|
     it { should validate_presence_of(field) }
   end
+
+  it { should define_enum_for(:state).with_values(
+    andhra_pradesh: 0,
+    arunachal_pradesh: 1,
+    assam: 2,
+    bihar: 3,
+    chhattisgarh: 4,
+    goa: 5,
+    gujarat: 6,
+    haryana: 7,
+    himachal_pradesh: 8,
+    jharkhand: 9,
+    karnataka: 10,
+    kerala: 11,
+    madhya_pradesh: 12,
+    maharashtra: 13,
+    manipur: 14,
+    meghalaya: 15,
+    mizoram: 16,
+    nagaland: 17,
+    odisha: 18,
+    punjab: 19
+  )}
 end

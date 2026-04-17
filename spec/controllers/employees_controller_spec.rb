@@ -16,4 +16,20 @@ RSpec.describe EmployeesController, type: :controller do
       expect(response).to have_http_status :ok
     end
   end
+
+  describe '#index' do
+    let(:make_request) { get :index }
+
+    it 'renders index' do
+      make_request
+
+      expect(response).to render_template(:index)
+    end
+
+    it 'returns 200 status on success' do
+      make_request
+
+      expect(response).to have_http_status :ok
+    end
+  end
 end

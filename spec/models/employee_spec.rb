@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  first_name :string
+#  last_name  :string
 #  salary     :decimal(, )
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -14,11 +15,12 @@ RSpec.describe Employee, type: :model do
 
   #schema
   it { is_expected.to have_db_column(:first_name).of_type(:string) }
+  it { is_expected.to have_db_column(:last_name).of_type(:string) }
   it { is_expected.to have_db_column(:salary).of_type(:decimal) }
 
   # Validations
 
-  [:first_name, :salary].each do |field|
+  [:first_name, :salary, :last_name].each do |field|
     it { should validate_presence_of(field) }
   end
 end

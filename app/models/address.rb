@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: addresses
+#
+#  id          :integer          not null, primary key
+#  city        :string
+#  line_1      :string
+#  line_2      :string
+#  state       :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  employee_id :integer
+#
+# Indexes
+#
+#  index_addresses_on_employee_id  (employee_id)
+#
+class Address < ApplicationRecord
+  belongs_to :employee
+
+  validates_presence_of :line_1, :line_2, :city, :state
+end

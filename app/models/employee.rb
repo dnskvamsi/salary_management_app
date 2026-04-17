@@ -10,5 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Employee < ApplicationRecord
+
+  has_one :address
   validates_presence_of :first_name, :salary, :last_name
 end

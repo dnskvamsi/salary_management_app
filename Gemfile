@@ -25,6 +25,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'rspec'
   gem 'factory_bot_rails'
+  gem 'annotaterb'
 end
 
 group :development do

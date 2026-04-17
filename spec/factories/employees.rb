@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  first_name :string
+#  job_title  :integer
 #  last_name  :string
 #  salary     :decimal(, )
 #  created_at :datetime         not null

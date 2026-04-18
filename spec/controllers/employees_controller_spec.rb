@@ -32,4 +32,20 @@ RSpec.describe EmployeesController, type: :controller do
       expect(response).to have_http_status :ok
     end
   end
+
+  describe '#stats' do
+    let(:make_request) { get :stats }
+
+    it 'renders new' do
+      make_request
+
+      expect(response).to render_template(:stats)
+    end
+
+    it 'returns 200 status on success' do
+      make_request
+
+      expect(response).to have_http_status :ok
+    end
+  end
 end

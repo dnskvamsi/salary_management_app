@@ -19,6 +19,7 @@ gem "cssbundling-rails", "~> 1.4"
 gem "jsbundling-rails"
 gem "dartsass-rails", "~> 0.5.1"
 gem 'csv'
+gem "kaminari"
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'

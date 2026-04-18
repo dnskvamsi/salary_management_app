@@ -1,0 +1,3 @@
+<li class="page-item <%= page.current? ? 'active' : '' %>">
+  <%= link_to page, url, class: "page-link", aria: { current: page.current? ? "page" : nil } %>
+</li>

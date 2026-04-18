@@ -4,7 +4,7 @@
     <div>
       <%= link_to "＋ New Employee", new_employee_path,
       class: "btn btn-primary" %>
-      <span class="badge bg-secondary"><%= @employees.count %> total</span>
+      <span class="badge bg-secondary"><%= Employee.count %> total</span>
     </div>
   </div>
 
@@ -29,5 +29,18 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mt-4">
+    <p class="text-muted mb-0">
+      Showing
+      <strong><%= @employees.offset_value + 1 %></strong>
+      –
+      <strong><%= [@employees.offset_value + @employees.length, @employees.total_count].min %></strong>
+      of
+      <strong><%= @employees.total_count %></strong>
+      employees
+    </p>
+    <%= paginate @employees %>
   </div>
 </div>

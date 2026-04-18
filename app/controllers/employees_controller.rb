@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
   before_action :set_employee, only: [:edit, :update, :destroy]
 
   def index
-    @employees = Employee.includes(:address).all
+    @employees = Employee.includes(:address).page(params[:page]).per(20)
   end
 
   def new

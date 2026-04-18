@@ -2,3 +2,5 @@
   render(partial: 'stats_results', locals: { stats: @stats, employees: @employees })
 ) %>
 $("#filterrific_results").html("<%= js %>");
+
+Chartkick.eachChart( function(chart) { chart.redraw(); } )

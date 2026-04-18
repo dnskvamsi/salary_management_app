@@ -1,6 +1,11 @@
+<h1 class="h3 fw-bold text-center pb-2">Employees</h1>
+
 <div class="container py-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="h3 fw-bold">Employees</h1>
+    <div>
+        <%= link_to "View Stats here", stats_employees_path, class: "btn btn-primary" %>
+    </div>
+
     <div>
       <%= link_to "＋ New Employee", new_employee_path,
       class: "btn btn-primary" %>

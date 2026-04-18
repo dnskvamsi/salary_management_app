@@ -19,7 +19,7 @@ RSpec.describe Employee, type: :model do
   it { is_expected.to have_db_column(:last_name).of_type(:string) }
   it { is_expected.to have_db_column(:salary).of_type(:decimal) }
 
-  it { is_expected.to have_one(:address) }
+  it { is_expected.to have_one(:address).dependent(:destroy) }
 
   # Validations
 

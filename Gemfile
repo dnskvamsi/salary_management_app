@@ -15,6 +15,9 @@ gem 'solid_cable'
 gem 'bootsnap', require: false
 gem 'kamal', require: false
 gem 'thruster', require: false
+gem "cssbundling-rails", "~> 1.4"
+gem "jsbundling-rails"
+gem "dartsass-rails", "~> 0.5.1"
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'

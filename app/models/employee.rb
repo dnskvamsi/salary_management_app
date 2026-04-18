@@ -12,7 +12,7 @@
 #
 class Employee < ApplicationRecord
 
-  has_one :address
+  has_one :address, dependent: :destroy
   validates_presence_of :first_name, :salary, :last_name, :job_title
 
   enum :job_title, {

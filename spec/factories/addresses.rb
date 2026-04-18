@@ -18,7 +18,7 @@
 FactoryBot.define do
   factory :address do
     city { "MyString" }
-    state { 1 }
+    state { :andhra_pradesh }
     line_1 { "MyString" }
     line_2 { "MyString" }
   end

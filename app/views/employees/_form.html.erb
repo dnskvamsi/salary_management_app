@@ -30,12 +30,12 @@
           <%= f.select :job_title,
                 Employee.job_titles.keys.map { |k| [k.humanize, k] },
                 { include_blank: "Select a job title" },
-                class: "form-select" %>
+                class: "form-select", required: true  %>
         </div>
 
         <div class="col-6">
           <%= f.label :salary, class: "form-label" %>
-          <%= f.number_field :salary, class: "form-control" %>
+          <%= f.number_field :salary, class: "form-control", required: true  %>
         </div>
       </div>
 
@@ -47,17 +47,17 @@
         <div class="row g-3">
           <div class="col-12">
             <%= addr.label :line_1, "Address Line 1", class: "form-label" %>
-            <%= addr.text_field :line_1, class: "form-control" %>
+            <%= addr.text_field :line_1, class: "form-control", required: true  %>
           </div>
 
           <div class="col-12">
             <%= addr.label :line_2, "Address Line 2", class: "form-label" %>
-            <%= addr.text_field :line_2, class: "form-control" %>
+            <%= addr.text_field :line_2, class: "form-control", required: true  %>
           </div>
 
           <div class="col-6">
             <%= addr.label :city, class: "form-label" %>
-            <%= addr.text_field :city, class: "form-control" %>
+            <%= addr.text_field :city, class: "form-control", required: true  %>
           </div>
 
           <div class="col-6">
@@ -65,7 +65,7 @@
             <%= addr.select :state,
                   Address.states.keys.map { |k| [k.humanize, k] },
                   { include_blank: "Select a state" },
-                  class: "form-select" %>
+                  class: "form-select", required: true  %>
           </div>
         </div>
       <% end %>

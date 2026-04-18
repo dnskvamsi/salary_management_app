@@ -14,7 +14,7 @@ FactoryBot.define do
   factory :employee do
     first_name { 'First Name' }
     last_name { 'Last Name' }
-    job_title { 0 }
+    job_title { :software_engineer }
     salary { 20000 }
   end
 end

@@ -14,7 +14,6 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     if @employee.save
       respond_to do |format|
-        format.turbo_stream
         format.html { redirect_to employees_path, notice: "Employee created successfully." }
       end
     else
@@ -29,7 +28,6 @@ class EmployeesController < ApplicationController
   def update
     if @employee.update(employee_params)
       respond_to do |format|
-        format.turbo_stream
         format.html { redirect_to employees_path, notice: "Employee updated successfully." }
       end
     else
@@ -40,7 +38,6 @@ class EmployeesController < ApplicationController
   def destroy
     @employee.destroy
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.remove("employee_#{@employee.id}") }
       format.html { redirect_to employees_path, notice: "Employee deleted." }
     end
   end

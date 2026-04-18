@@ -1,15 +1,11 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the EmployeesHelper. For example:
-#
-# describe EmployeesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe EmployeesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#displayable_name' do
+    let(:employee) { create :employee, first_name: 'Bat', last_name: 'Man'}
+
+    it 'concats first_name and last_name' do
+      expect(helper.displayable_name(employee)).to eq("Bat Man")
+    end
+  end
 end

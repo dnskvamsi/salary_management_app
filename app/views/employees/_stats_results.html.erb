@@ -1,0 +1,45 @@
+<div class="stats-header">
+  <h2>Results</h2>
+  <p>Count: <%= stats[:count] %></p>
+  <p>Avg Salary: <%= number_to_currency(stats[:avg_salary], unit: "₹", precision: 2) %></p>
+</div>
+
+<hr>
+
+<div class="container py-5">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th>
+          <th>Job Title</th>
+          <th>Salary</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @employees.any? %>
+          <%= render @employees %>
+        <% else %>
+          <tr>
+            <td colspan="6" class="text-center text-muted py-4">No employees found.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mt-4">
+    <p class="text-muted mb-0">
+      Showing
+      <strong><%= @employees.offset_value + 1 %></strong>
+      –
+      <strong><%= [@employees.offset_value + @employees.length, @employees.total_count].min %></strong>
+      of
+      <strong><%= @employees.total_count %></strong>
+      employees
+    </p>
+    <%= paginate @employees %>
+</div>

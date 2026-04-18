@@ -46,6 +46,30 @@ class EmployeesController < ApplicationController
   end
 
   def stats
+    @filterrific = initialize_filterrific(
+      Employee,
+      params[:filterrific],
+      select_options: {
+        with_job_title: Employee.job_titles.map { |name, id| [name.humanize.titleize, id] },
+        with_state: Address.states.map { |name, id| [name.humanize.titleize, id] }
+      }
+    ) || return
+
+    filtered_relation = @filterrific.find
+
+    @stats = {
+      count: filtered_relation.count,
+      avg_salary: filtered_relation.average(:salary).to_f,
+      min_salary: filtered_relation.minimum(:salary).to_f,
+      max_salary: filtered_relation.maximum(:salary).to_f
+    }
+    
+    @employees = @filterrific.find.page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

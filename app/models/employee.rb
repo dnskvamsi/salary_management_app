@@ -16,6 +16,25 @@ class Employee < ApplicationRecord
   validates_presence_of :first_name, :salary, :last_name, :job_title
   accepts_nested_attributes_for :address
 
+  filterrific(
+    available_filters: [
+      :with_job_title,
+      :with_state
+    ]
+  )
+
+  scope :with_job_title, ->(job_titles) {
+    return nil if job_titles.blank?
+    where(job_title: Array(job_titles).reject(&:blank?))
+  }
+
+  scope :with_state, ->(states) {
+    return nil if states.blank?
+    joins(:address).where(
+      addresses: { state: Array(states).reject(&:blank?) }
+    )
+  }
+
   enum :job_title, {
     software_engineer: 0,
     marketing_manager: 1,

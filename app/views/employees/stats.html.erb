@@ -1,1 +1,45 @@
-<h1> This is a stats page </h1>
+<div class="container mt-4">
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Filter Employee Statistics</h5>
+      
+      <%= form_for_filterrific @filterrific, remote: true, html: { class: 'row g-3 align-items-end' } do |f| %>
+        
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Job Title</label>
+          <%= f.select :with_job_title, 
+                       @filterrific.select_options[:with_job_title], 
+                       { include_blank: 'All Titles' }, 
+                       { class: 'form-select' } %>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Location (State)</label>
+          <%= f.select :with_state, 
+                       @filterrific.select_options[:with_state], 
+                       { include_blank: 'All States' }, 
+                       { class: 'form-select' } %>
+        </div>
+
+        <%= f.submit 'Filter', class: "btn btn-primary col-md-6" %>
+
+
+        <div class="col-md-6">
+          <%= link_to "Reset Filters", reset_filterrific_url, 
+                      class: "btn btn-outline-secondary w-100" %>
+        </div>
+
+        <div class="col-12 text-center mt-2">
+          <div id="filterrific_spinner" class="spinner-border spinner-border-sm text-primary" role="status" style="display:none;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        
+      <% end %>
+    </div>
+  </div>
+
+  <div id="filterrific_results">
+    <%= render 'stats_results', stats: @stats, employees: @employees %>
+  </div>
+</div>

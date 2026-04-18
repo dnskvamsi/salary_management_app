@@ -118,6 +118,7 @@ GEM
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
+    filterrific (5.2.7)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -460,6 +461,7 @@ DEPENDENCIES
   dartsass-rails (~> 0.5.1)
   debug
   factory_bot_rails
+  filterrific
   importmap-rails
   jbuilder
   jsbundling-rails

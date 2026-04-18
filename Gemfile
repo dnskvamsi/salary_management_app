@@ -20,6 +20,7 @@ gem "jsbundling-rails"
 gem "dartsass-rails", "~> 0.5.1"
 gem 'csv'
 gem "kaminari"
+gem "filterrific"
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'

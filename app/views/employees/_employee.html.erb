@@ -1,0 +1,24 @@
+<%= tag.tr id: "employee_#{employee.id}" do %>
+  <td><%= displayable_name(employee) %></td>
+  <td><%= employee.job_title.humanize %></td>
+  <td><%= number_to_currency(employee.salary, unit: "₹", precision: 2) %></td>
+  <td>
+    <% if employee.address.present? %>
+      <%= employee.address.line_1 %>,
+      <%= employee.address.line_2 %>,
+      <%= employee.address.city %>,
+      <%= employee.address.state.humanize %>
+    <% else %>
+      <span class="text-muted fst-italic">No address on file</span>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to "Edit", edit_employee_path(employee),
+          class: "btn btn-sm btn-outline-primary me-1",
+            data: { turbo_frame: "employee_modal" } %>
+    <%= button_to "Delete", employee,
+          method: :delete,
+          class: "btn btn-sm btn-outline-danger",
+          form: { data: { turbo_confirm: "Are you sure?" } } %>
+  </td>
+<% end %>

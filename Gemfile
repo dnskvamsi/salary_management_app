@@ -18,6 +18,7 @@ gem 'thruster', require: false
 gem "cssbundling-rails", "~> 1.4"
 gem "jsbundling-rails"
 gem "dartsass-rails", "~> 0.5.1"
+gem 'csv'
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'
@@ -30,6 +31,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'annotaterb'
   gem 'rails-controller-testing'
+  gem "pry-rails"
+  gem "pry-nav"
+  gem "pry-doc"
 end
 
 group :development do

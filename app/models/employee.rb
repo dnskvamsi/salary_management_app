@@ -14,6 +14,7 @@ class Employee < ApplicationRecord
 
   has_one :address, dependent: :destroy
   validates_presence_of :first_name, :salary, :last_name, :job_title
+  accepts_nested_attributes_for :address
 
   enum :job_title, {
     software_engineer: 0,

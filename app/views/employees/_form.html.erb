@@ -1,0 +1,76 @@
+<h4 class="text-muted text-center text-uppercase fw-semibold mb-3 mt-3">
+    Employee Details
+</h4>
+<div class="card m-auto" style="width: 700px;">
+  <div class="card-body">
+    <%= form_with model: employee, class: "needs-validation" do |f| %>
+      <% if employee.errors.any? %>
+        <div class="alert alert-danger">
+          <ul class="mb-0">
+            <% employee.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="row g-3 mb-4">
+        <div class="col-6">
+          <%= f.label :first_name, class: "form-label" %>
+          <%= f.text_field :first_name, class: "form-control", required: true %>
+        </div>
+
+        <div class="col-6">
+          <%= f.label :last_name, class: "form-label" %>
+          <%= f.text_field :last_name, class: "form-control", required: true %>
+        </div>
+
+        <div class="col-6">
+          <%= f.label :job_title, class: "form-label" %>
+          <%= f.select :job_title,
+                Employee.job_titles.keys.map { |k| [k.humanize, k] },
+                { include_blank: "Select a job title" },
+                class: "form-select" %>
+        </div>
+
+        <div class="col-6">
+          <%= f.label :salary, class: "form-label" %>
+          <%= f.number_field :salary, class: "form-control" %>
+        </div>
+      </div>
+
+      <h6 class="text-muted text-uppercase fw-semibold mb-3" style="font-size: 0.75rem; letter-spacing: 0.05em;">
+        Address
+      </h6>
+
+      <%= f.fields_for :address_attributes, employee.address || employee.build_address do |addr| %>
+        <div class="row g-3">
+          <div class="col-12">
+            <%= addr.label :line_1, "Address Line 1", class: "form-label" %>
+            <%= addr.text_field :line_1, class: "form-control" %>
+          </div>
+
+          <div class="col-12">
+            <%= addr.label :line_2, "Address Line 2", class: "form-label" %>
+            <%= addr.text_field :line_2, class: "form-control" %>
+          </div>
+
+          <div class="col-6">
+            <%= addr.label :city, class: "form-label" %>
+            <%= addr.text_field :city, class: "form-control" %>
+          </div>
+
+          <div class="col-6">
+            <%= addr.label :state, class: "form-label" %>
+            <%= addr.select :state,
+                  Address.states.keys.map { |k| [k.humanize, k] },
+                  { include_blank: "Select a state" },
+                  class: "form-select" %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= f.submit "Save Changes", class: "btn btn-primary mt-3" %>
+    <% end %>
+  </div>
+</div>

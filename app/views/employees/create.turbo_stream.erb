@@ -1,0 +1,13 @@
+<%= turbo_stream.append "employees_tbody" do %>
+  <%= render @employee %>
+<% end %>
+
+<%= turbo_stream.replace "employee_modal" do %>
+  <%= turbo_frame_tag "employee_modal" %>
+<% end %>
+
+<%= turbo_stream.append "employee_modal" do %>
+  <script>
+    bootstrap.Modal.getInstance(document.getElementById('employeeModal'))?.hide();
+  </script>
+<% end %>

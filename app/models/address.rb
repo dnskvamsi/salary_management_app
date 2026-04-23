@@ -21,5 +21,6 @@ class Address < ApplicationRecord
 
   validates_presence_of :line_1, :line_2, :city, :state
 
-  enum :state, LOCATIONS.values.inject(&:merge)
+  enum :state, LOCATIONS.values.inject(&:merge).freeze
+  enum :country, LOCATIONS.keys
 end

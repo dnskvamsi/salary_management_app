@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  city        :string
+#  country     :integer
 #  line_1      :string
 #  line_2      :string
 #  state       :integer

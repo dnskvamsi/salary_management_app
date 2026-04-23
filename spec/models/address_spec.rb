@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  city        :string
+#  country     :integer
 #  line_1      :string
 #  line_2      :string
 #  state       :integer
@@ -35,4 +36,5 @@ RSpec.describe Address, type: :model do
   end
 
   it { should define_enum_for(:state).with_values(LOCATIONS.values.inject(&:merge))}
+  it { should define_enum_for(:country).with_values(LOCATIONS.keys) }
 end

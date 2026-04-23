@@ -62,7 +62,7 @@ class EmployeesController < ApplicationController
       max_salary: filtered_relation.maximum(:salary).to_f
     }
 
-    @chart_data = Employee.group(:job_title).average(:salary).transform_keys { |k| k.humanize }
+    @chart_data = filtered_relation.group(:job_title).average(:salary).transform_keys { |k| k.humanize }
     
     @employees = @filterrific.find.page(params[:page]).per(10)
 

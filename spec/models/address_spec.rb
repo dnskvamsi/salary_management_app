@@ -37,4 +37,22 @@ RSpec.describe Address, type: :model do
 
   it { should define_enum_for(:state).with_values(LOCATIONS.values.inject(&:merge))}
   it { should define_enum_for(:country).with_values(LOCATIONS.keys) }
+
+  context 'validations' do
+    describe 'state and country combination' do
+      it 'adds errors if state and country are of invalid combination' do
+        address = build_stubbed :address, state: :andhra_pradesh, country: :usa
+
+        expect(address).to be_invalid
+        expect(address.errors.added?(:base, :invalid_combination)).to be
+      end
+
+      it 'does not add error is combination is correct' do
+        address = build_stubbed :address, state: :andhra_pradesh, country: :india
+
+        expect(address).to be_valid
+        expect(address.errors.added?(:base, :invalid_combination)).not_to be
+      end
+    end
+  end
 end

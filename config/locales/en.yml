@@ -28,4 +28,10 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        address:
+          attributes:
+            base:
+              invalid_combination: "The selected state is not a valid division of the selected country."

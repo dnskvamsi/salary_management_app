@@ -22,5 +22,7 @@ FactoryBot.define do
     state { :andhra_pradesh }
     line_1 { "MyString" }
     line_2 { "MyString" }
+    country { :india }
+    association :employee
   end
 end

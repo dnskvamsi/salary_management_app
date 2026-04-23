@@ -35,6 +35,13 @@ class Employee < ApplicationRecord
     )
   }
 
+  scope :with_country, ->(countires) {
+    return nil if countires.blank?
+    joins(:address).where(
+      addresses: { country: Array(countires).reject(&:blank?) }
+    )
+  }
+
   enum :job_title, {
     software_engineer: 0,
     marketing_manager: 1,

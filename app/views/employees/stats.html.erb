@@ -5,7 +5,7 @@
       
       <%= form_for_filterrific @filterrific, remote: true, html: { class: 'row g-3 align-items-end' } do |f| %>
         
-        <div class="col-md-6">
+        <div class="col-md-4">
           <label class="form-label fw-bold">Job Title</label>
           <%= f.select :with_job_title, 
                        @filterrific.select_options[:with_job_title], 
@@ -13,7 +13,7 @@
                        { class: 'form-select' } %>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
           <label class="form-label fw-bold">Location (State)</label>
           <%= f.select :with_state, 
                        @filterrific.select_options[:with_state], 
@@ -21,8 +21,15 @@
                        { class: 'form-select' } %>
         </div>
 
-        <%= f.submit 'Filter', class: "btn btn-primary col-md-6" %>
+        <div class="col-md-4">
+          <label class="form-label fw-bold">Country </label>
+          <%= f.select :with_country, 
+                       @filterrific.select_options[:with_country], 
+                       { include_blank: 'All Countries' },
+                       { class: 'form-select' } %>
+        </div>
 
+        <%= f.submit 'Filter', class: "btn btn-primary col-md-6" %>
 
         <div class="col-md-6">
           <%= link_to "Reset Filters", reset_filterrific_url, 

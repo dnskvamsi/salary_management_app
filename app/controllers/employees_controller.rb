@@ -48,7 +48,8 @@ class EmployeesController < ApplicationController
       params[:filterrific],
       select_options: {
         with_job_title: Employee.job_titles.map { |name, id| [name.humanize.titleize, id] },
-        with_state: Address.states.map { |name, id| [name.humanize.titleize, id] }
+        with_state: Address.states.map { |name, id| [name.humanize.titleize, id] },
+        with_country: Address.countries.map { |name, id| [name.humanize.titleize, id] }
       }
     ) || return
 

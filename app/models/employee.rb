@@ -19,7 +19,8 @@ class Employee < ApplicationRecord
   filterrific(
     available_filters: [
       :with_job_title,
-      :with_state
+      :with_state,
+      :with_country
     ]
   )
 

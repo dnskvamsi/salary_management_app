@@ -23,6 +23,9 @@ RSpec.describe Address, type: :model do
     it { is_expected.to have_db_column(column_name).of_type(:string) }
   end
 
+  it { is_expected.to have_db_column(:state).of_type(:integer) }
+  it { is_expected.to have_db_column(:country).of_type(:integer) }
+
   it { is_expected.to belong_to(:employee) }
 
   # Validations

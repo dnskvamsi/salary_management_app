@@ -31,7 +31,7 @@ RSpec.describe Address, type: :model do
 
   # Validations
 
-  [:line_1, :line_2, :city, :state].each do |field|
+  [:line_1, :line_2, :city, :state, :country].each do |field|
     it { should validate_presence_of(field) }
   end
 

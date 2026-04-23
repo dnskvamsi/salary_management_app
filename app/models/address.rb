@@ -19,7 +19,7 @@
 class Address < ApplicationRecord
   belongs_to :employee
 
-  validates_presence_of :line_1, :line_2, :city, :state
+  validates_presence_of :line_1, :line_2, :city, :state, :country
 
   enum :state, LOCATIONS.values.inject(&:merge).freeze
   enum :country, LOCATIONS.keys

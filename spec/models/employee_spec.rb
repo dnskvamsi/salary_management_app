@@ -56,10 +56,22 @@ RSpec.describe Employee, type: :model do
 
     describe '#with_state' do
       it 'returns records only from the given state' do
-        employee1 = create(:address, state: 1, employee: create(:employee)).employee
-        employee2 = create(:address, state: 2, employee: create(:employee)).employee
+        employee1 = create(:address, state: :andhra_pradesh, country: :india, employee: create(:employee)).employee
+        employee2 = create(:address, state: :california, country: :usa, employee: create(:employee)).employee
 
-        records = Employee.with_state(1)
+        records = Employee.with_state(:andhra_pradesh)
+
+        expect(records).to eq([employee1])
+        expect(records).not_to include(employee2)
+      end
+    end
+
+    describe '#with_country' do
+      it 'returns records only from the given state' do
+        employee1 = create(:address, state: :andhra_pradesh, country: :india, employee: create(:employee)).employee
+        employee2 = create(:address, state: :california, country: :usa, employee: create(:employee)).employee
+
+        records = Employee.with_country(:india)
 
         expect(records).to eq([employee1])
         expect(records).not_to include(employee2)

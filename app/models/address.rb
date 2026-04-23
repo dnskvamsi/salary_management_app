@@ -23,4 +23,16 @@ class Address < ApplicationRecord
 
   enum :state, LOCATIONS.values.inject(&:merge).freeze
   enum :country, LOCATIONS.keys
+
+  validate :state_must_belong_to_country
+
+  private
+
+  def state_must_belong_to_country
+    return if country.blank? || state.blank?
+
+    unless LOCATIONS[country.to_sym]&.include?(state.to_sym)
+      errors.add(:base, :invalid_combination)
+    end
+  end
 end

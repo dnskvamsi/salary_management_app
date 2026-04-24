@@ -1,5 +1,14 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "./controllers"
 import "bootstrap"
-import "chartkick"
-import "Chart.bundle"
+
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './components/App'
+
+document.addEventListener('DOMContentLoaded', () => {
+  const rootElement = document.getElementById('react-app')
+  if (rootElement) {
+    const root = createRoot(rootElement)
+    root.render(<App />)
+  }
+})

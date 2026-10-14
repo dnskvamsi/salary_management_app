@@ -30,5 +30,5 @@ bin/dev
 
 ### Running the tests
 ```
-    bundle exec rspec
+bundle exec rspec
 ```
